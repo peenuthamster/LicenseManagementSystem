@@ -1,52 +1,44 @@
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.time.Period;
+import java.time.LocalDate;
 
-public class User{
-    Scanner sc = new Scanner(System.in);
-   private String userID;
-   private String name;
-   private String address;
-   private String phoneNumber;
-   private String role;
-   private String email;
-   private String password;
-   private String citizenshipID;
+public class User {
+    static Scanner sc = new Scanner(System.in);
+    private static String userID;
+    private String name, role, email, password, citizenshipID;
+    private LocalDate birthDate;
 
+    public User() {}
 
-   public User(){
-
-   }
-
-    public User(String userID, String name, String address, String phoneNumber, String role, String email, String password, String citizenshipID) {
-        this.userID = userID;
+    public User(String userID, String name, String role, String email, String password, String citizenshipID, LocalDate birthDate) {
+        this.userID = uniqueIdGenerator();
         this.name = name;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
         this.role = role;
         this.email = email;
         this.password = password;
         this.citizenshipID = citizenshipID;
+        this.birthDate = birthDate;
     }
 
-    public void registerUser(){
-        System.out.println("Enter your Name: ");
-        String name = sc.nextLine();
-        System.out.println("Enter your Address: ");
-        String address = sc.nextLine();
-        System.out.println("Enter your Phone Number: ");
-        String phoneNumber = sc.nextLine();
-        System.out.println("Enter your Role (1 for Normal User, 2 for Admin User): ");
-        int choice = sc.nextInt();
-        String role;
-        switch(choice){
-            case 1:
-                role = "NormalUser";
+    private static int userCount = 1;
+    public String uniqueIdGenerator() {
+        return "UID" + userCount++;
+    }
 
-                break;
-            case 2:
-                role = "AdminUser";
-                break;
-            default:
-                System.out.println("Invalid role, Please try again.");
-        }
+    public static int calculateAge(LocalDate birthDate) {
+        return Period.between(birthDate, LocalDate.now()).getYears();
+    }
 
-}}
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+}
