@@ -1,15 +1,12 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+
 import java.time.Period;
 import java.time.LocalDate;
 
 public class User {
-    static Scanner sc = new Scanner(System.in);
-    private static String userID;
+    private String userID;
     private String name, role, email, password, citizenshipID;
     private LocalDate birthDate;
 
-    public User() {}
 
     public User(String userID, String name, String role, String email, String password, String citizenshipID, LocalDate birthDate) {
         this.userID = uniqueIdGenerator();
@@ -30,6 +27,9 @@ public class User {
         return Period.between(birthDate, LocalDate.now()).getYears();
     }
 
+    public String getName(){
+        return name;
+    }
     public String getEmail() {
         return email;
     }

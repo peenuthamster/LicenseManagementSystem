@@ -20,6 +20,7 @@ public class Application {
     }
 
     public static void listOfAllCategories() {
+        System.out.println("====================================");
         System.out.println("K. Scooter. Moped");
         System.out.println("A. Motorcycle, Scooter, Moped");
         System.out.println("B. Car, Jeep, Delivery Van");
@@ -30,9 +31,10 @@ public class Application {
         System.out.println("H. Road Roller, Dozer");
         System.out.println("I. Crane, Fire Brigade, Loader");
         System.out.println("J5. Other Heavy Equipment");
+        System.out.println("====================================");
     }
 
-    public boolean validateCategory(String category) {
+    public boolean validCategory(String category) {
         String[] validCategories = {"K", "A", "B", "C", "C1", "D", "D1", "F", "H", "I", "J5"};
         for (String validCategory : validCategories) {
             if (validCategory.equals(category)) {
@@ -60,7 +62,7 @@ public class Application {
         return status;
     }
 
-    public void setStatus(String status) { // Added setter for status
+    public void setStatus(String status) {
         this.status = status;
     }
 
